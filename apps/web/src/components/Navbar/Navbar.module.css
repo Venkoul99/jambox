@@ -1,0 +1,130 @@
+.navbar {
+  height: 100%;
+  width: 400px;
+  padding: var(--mantine-spacing-md);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  right: 0;
+  font-family: 'Font Awesome 6 Brands', sans-serif;
+  letter-spacing: 1px;
+  justify-content: flex-start;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.navbarMain {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 200px;
+  justify-content: flex-start;
+}
+
+.hamburger {
+  cursor: pointer;
+  padding: 10px;
+  background-color: transparent;
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  pointer-events: auto;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: var(--mantine-font-size-sm);
+  color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-1));
+  padding: var(--mantine-spacing-sm) var(--mantine-spacing-sm);
+  border-radius: var(--mantine-radius-sm);
+  font-weight: 500;
+  width: 100%;
+  text-align: center;
+  transition: margin 0.3s ease;
+  pointer-events: auto;
+}
+
+.link:hover {
+  color: #FF5733;
+  text-decoration: underline;
+}
+
+.link:focus {
+  outline: none;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%; /* Fullscreen height */
+    width: 100%; /* Fullscreen width */
+    padding: var(--mantine-spacing-sm);
+    z-index: 1000; /* Ensure the navbar is above other elements */
+    background: transparent; /* Default state: no background */
+    transition: background 0.3s ease; /* Smooth background transition */
+  }
+
+  .navbar.open {
+    background: linear-gradient(270deg, #C4C4C4, #B2B9BF, #D1D9E1, #A1B8D7); /* Same as body background */
+    background-size: 600% 600%;
+    animation: GradientAnimation 12s ease infinite; /* Keep gradient animation */
+  }
+
+  .navbarMain {
+    display: none;
+  }
+
+  .navbarMain.open {
+    display: flex; /* Show navbar links when open */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  .navbar img {
+    display: block; /* Ensure logo is shown */
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin-top: 20px;
+  }
+
+  .hamburger {
+    display: block; /* Show hamburger on mobile */
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1001; /* Ensure hamburger is above the navbar */
+  }
+}
+
+/* Desktop Styles */
+@media (min-width: 769px) {
+  .navbarMain {
+    display: flex; /* Show navbar links on desktop */
+  }
+
+  .navbar img {
+    display: block; /* Ensure logo is shown on desktop */
+    width: 400px;
+    height: 100px;
+    object-fit: contain;
+    margin-top: 20px; /* Adjust top margin for alignment */
+  }
+
+  .hamburger {
+    display: none; /* Hide hamburger on desktop */
+  }
+}

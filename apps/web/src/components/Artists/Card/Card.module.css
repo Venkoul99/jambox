@@ -1,0 +1,105 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-right: 150px;
+}
+
+.card {
+  scroll-snap-align: center;
+  width: 700px;
+  text-align: center;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  transition: none !important;
+  border: none !important;
+  position: relative;
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.image {
+  max-width: 100%;;
+  max-height: 750px;
+  object-fit: cover;
+}
+
+.title {
+  font-family: 'Merriweather', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  color: #333;
+}
+
+.clickableTitle {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+.clickableTitle:hover {
+  color: #FF5733;
+  text-decoration: underline;
+}
+
+.clickableTitle:focus {
+  outline: none;
+}
+
+.actionGroup {
+  display: flex;
+  justify-content: flex-end;
+
+}
+
+.single {
+  margin-bottom: 100px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin-right: 0;
+    margin-top: 40px;
+  }
+
+  .card {
+    display: flex;
+  justify-content: center;
+  align-items: center;
+    width: 100%;
+    margin: 10px 0;
+    padding: 15px;
+  }
+
+  .imageContainer {
+    width: 300px;
+    height: 100%;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+}
