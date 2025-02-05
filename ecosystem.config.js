@@ -4,7 +4,7 @@ module.exports = {
       name: "backend",
       script: "npm",
       args: "run start:prod",
-      cwd: "/var/www/jambox/apps/api",
+      cwd: "/var/www/jambox/apps/server",
       env: {
         NODE_ENV: "production",
       },
