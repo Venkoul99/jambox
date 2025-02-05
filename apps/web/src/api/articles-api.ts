@@ -4,8 +4,6 @@ import { CreateArticle } from '@/types/createArticle.type';
 
 const SERVER_URL = import.meta.env.VITE_ENVIRONMENT === 'DEV' ? import.meta.env.VITE_API_DEV_URL : import.meta.env.VITE_API_PROD_URL;
 
-console.log(SERVER_URL)
-
 const BASE_URL = `${SERVER_URL}/api/articles`;
 
 export const getAll = async (): Promise<Article[]> => {
