@@ -1,53 +1,94 @@
+import { getAcessToken } from '@/tools/getAcessToken';
 import { Artist } from '@/types/artist.type';
-import * as request from './requester';
 import { CreateArtist } from '@/types/createArtist.type';
+import axios from 'axios';
 
 const SERVER_URL = import.meta.env.VITE_ENVIRONMENT === 'DEV' ? import.meta.env.VITE_API_DEV_URL : import.meta.env.VITE_API_PROD_URL;
 
 const BASE_URL = `${SERVER_URL}/api/artists`;
 
 export const getAll = async (): Promise<Artist[]> => {
-  const result = await request.get<Record<string, Artist>>(BASE_URL);
+  const accessToken = getAcessToken();
 
-  const news = Object.values(result);
-
-  return news;
+  const response = await axios.get(`${BASE_URL}`, {
+    headers: {
+      'Authorization': `Bearer ${accessToken}`,
+    },
+  });
+  return Object.values(response.data);
 };
 
-export const getLastThree = async (): Promise<Artist[]> => {
-  const result = await request.get<Record<string, Artist>>(`${BASE_URL}/?sortBy=_publishedOn%20desc&pageSize=3`);
-
-  const news = Object.values(result);
-
-  return news;
+export const getOne = async (artistId: string): Promise<Artist> => {
+  const response = await axios.get(`${BASE_URL}/${artistId}`, {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+    },
+  });
+  return response.data;
 };
 
-export const getOne = (ArtistId: string): Promise<Artist> => request.get<Artist>(`${BASE_URL}/${ArtistId}`);
+export const create = async (artistData: CreateArtist) => {
 
-export const create = (ArtistData: CreateArtist) => {
+  const accessToken = getAcessToken();
 
-  if (ArtistData.bio.length > 150) {
-    ArtistData.shortBio = `${ArtistData.bio.substring(0, 150)}...`
+  if (artistData.bio.length > 150) {
+    artistData.shortBio = `${artistData.bio.substring(0, 150)}...`;
   }
 
-  request.post<Artist>(`${BASE_URL}`, ArtistData);
-}
+  try {
+    const response = await axios.post(`${BASE_URL}`, artistData, {
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+      },
+    });
+    return response.data;
+  } catch (err) {
+    console.error('Error creating artist', err);
+    throw err;
+  }
+};
 
-export const remove = (ArtistId: string): Promise<Artist> => request.del<Artist>(`${BASE_URL}/${ArtistId}`);
+export const update = async (artistId: string, artistData: Omit<CreateArtist, 'id'>) => {
+  const accessToken = getAcessToken();
 
-export const update = (ArtistId: string, ArtistData: Omit<CreateArtist, 'id'>): Promise<Artist> => {
-  if (ArtistData.bio.length > 150) {
-    ArtistData.shortBio = `${ArtistData.bio.substring(0, 150)}...`
+  if (artistData.bio.length > 150) {
+    artistData.shortBio = `${artistData.bio.substring(0, 150)}...`;
   } else {
-    ArtistData.shortBio = ''
+    artistData.shortBio = '';
   }
 
-  return request.put<Artist>(`${BASE_URL}/${ArtistId}`, ArtistData);
-}
+  try {
+    const response = await axios.put(`${BASE_URL}/${artistId}`, artistData, {
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+      },
+    });
+    return response.data;
+  } catch (err) {
+    console.error('Error updating artist', err);
+    throw err;
+  }
+};
+
+export const remove = async (artistId: string) => {
+  const accessToken = getAcessToken();
+
+  try {
+    const response = await axios.delete(`${BASE_URL}/${artistId}`, {
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+      },
+    });
+    return response.data;
+  } catch (err) {
+    console.error('Error removing artist', err);
+    throw err;
+  }
+};
+
 
 const artistApi = {
   getOne,
-  getLastThree,
   getAll,
   create,
   update,

@@ -115,7 +115,7 @@ export default function Card(props: CardProps) {
         </Text>
 
         <div>
-          {props.shortContent && !props.isSingle ? (
+          {/* {props.shortContent && !props.isSingle ? (
             <Text className={styles.description}>
               <span dangerouslySetInnerHTML={{ __html: ensureLinksOpenInNewTab(props.shortContent) }} />
               {' '}
@@ -137,11 +137,11 @@ export default function Card(props: CardProps) {
                 View More
               </span>
             </Text>
-          ) : (
-            <Text className={styles.description}>
-              <span dangerouslySetInnerHTML={{ __html: ensureLinksOpenInNewTab(props.content) }} />
-            </Text>
-          )}
+          ) : ( */}
+          <Text className={styles.description}>
+            <span dangerouslySetInnerHTML={{ __html: ensureLinksOpenInNewTab(props.content) }} />
+          </Text>
+          {/* )} */}
         </div>
       </MantineCard>
     </div >

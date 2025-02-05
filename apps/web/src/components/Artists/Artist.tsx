@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import artistApi from '@/api/artist-api';
 import { Artist as ArtistType } from '@/types/artist.type';
 import ArtistCard from './Card/ArtistCard';
+import artistApi from '@/api/artist-api';
 
 export default function Artist() {
   const [artists, setArtists] = useState<ArtistType[]>([]);
@@ -14,7 +14,7 @@ export default function Artist() {
         const result = await artistApi.getAll();
         setArtists(result);
       } catch (err) {
-        setError('Failed to fetch articles');
+        setError('Failed to fetch artists');
       } finally {
         setLoading(false);
       }

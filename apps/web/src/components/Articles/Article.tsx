@@ -23,6 +23,7 @@ export default function Article() {
     fetchArticles();
   }, []);
 
+
   if (loading) {
     return <p>Loading articles...</p>;
   }

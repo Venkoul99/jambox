@@ -93,7 +93,7 @@ export default function CreateArtistTable() {
         await artistApi.create(artistData);
       }
 
-      navigate('/');
+      navigate('/artists');
     } catch (err) {
       const error = err as Error;
       setErrorMessage(error.message);
@@ -170,7 +170,7 @@ export default function CreateArtistTable() {
             color="blue"
             mt="md"
           >
-            Submit Article
+            Submit Artist
           </Button>
         </Paper>
       </Grid.Col>

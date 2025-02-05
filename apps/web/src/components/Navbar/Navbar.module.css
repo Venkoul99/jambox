@@ -60,6 +60,27 @@
   outline: none;
 }
 
+.socialMedia {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+  pointer-events: auto;
+}
+
+.socialIcon {
+  color: #4a4a4a; /* Dark grey color */
+  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+  pointer-events: auto;
+}
+
+.socialIcon:hover {
+  transform: scale(1.2);
+  color: black; /* Turns black on hover */
+  pointer-events: auto;
+}
+
+
 /* Mobile Styles */
 @media (max-width: 768px) {
   .navbar {

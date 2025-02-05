@@ -1,9 +1,9 @@
 import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '@/context/authContext';
-import { Menu, X } from 'tabler-icons-react'; // For hamburger icon
+import { Menu, X, BrandInstagram, BrandFacebook, BrandYoutube } from 'tabler-icons-react';
 import classes from './Navbar.module.css';
-import { Button } from '@mantine/core';
+import { Button, ActionIcon } from '@mantine/core';
 import { useIsMobile } from '@/hooks/useIsMobile';
 
 const data = [
@@ -65,41 +65,62 @@ export function Navbar() {
       </Button>
 
       {navbarOpen && (
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
+        <div className={classes.logoContainer}>
           <img
             src="/logo.PNG"
             alt="Logo"
-            style={{
-              marginTop: '20px',
-              width: '100%',
-              height: 'auto',
-              objectFit: 'contain',
-            }}
+            className={classes.logo}
           />
         </div>
       )}
 
-      <div
-        className={`${classes.navbarMain} ${navbarOpen ? classes.open : ''}`}
-      >
-        {links}
-        {isAuthenticated ? (
-          <div
-            style={{
-              marginTop: isMobile ? '0' : '200px',
-            }}
-          >
+      <div className={`${classes.navbarMain} ${navbarOpen ? classes.open : ''}`}>
+        <div style={{ marginBottom: '150px' }}>
+          {links}
+        </div>
+        {isAuthenticated && (
+          <div className={classes.adminLinks}>
             {adminLinks}
           </div>
-        ) : ''}
+        )}
+
+        <div className={classes.socialMedia}>
+          <ActionIcon
+            component="a"
+            href="https://www.instagram.com/jambox.rec"
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="transparent"
+            className={classes.socialIcon}
+          >
+            <BrandInstagram size={30} />
+          </ActionIcon>
+
+          <ActionIcon
+            component="a"
+            href="https://www.facebook.com/profile.php?id=61566491512876"
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="transparent"
+            className={classes.socialIcon}
+          >
+            <BrandFacebook size={30} />
+          </ActionIcon>
+
+          <ActionIcon
+            component="a"
+            href="https://www.youtube.com/@jambox.rec1"
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="transparent"
+            className={classes.socialIcon}
+          >
+            <BrandYoutube size={30} />
+          </ActionIcon>
+        </div>
 
       </div>
+
     </nav>
   );
 }
