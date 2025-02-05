@@ -1,6 +1,8 @@
 import requester from "./requester";
 
-const BASE_URL = "http://localhost:3000/api/auth";
+const SERVER_URL = import.meta.env.VITE_ENVIRONMENT === 'DEV' ? import.meta.env.VITE_API_DEV_URL : import.meta.env.VITE_API_PROD_URL;
+
+const BASE_URL = `${SERVER_URL}/api/auth`;
 
 export const login = (username: string, password: string): Promise<AuthState> =>
   requester.post(`${BASE_URL}/login`, { username, password });

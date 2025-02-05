@@ -2,7 +2,9 @@ import { Artist } from '@/types/artist.type';
 import * as request from './requester';
 import { CreateArtist } from '@/types/createArtist.type';
 
-const BASE_URL = 'http://localhost:3000/api/artists';
+const SERVER_URL = import.meta.env.VITE_ENVIRONMENT === 'DEV' ? import.meta.env.VITE_API_DEV_URL : import.meta.env.VITE_API_PROD_URL;
+
+const BASE_URL = `${SERVER_URL}/api/artists`;
 
 export const getAll = async (): Promise<Artist[]> => {
   const result = await request.get<Record<string, Artist>>(BASE_URL);

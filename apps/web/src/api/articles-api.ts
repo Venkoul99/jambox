@@ -2,7 +2,11 @@ import { Article } from '@/types/article.type';
 import * as request from './requester';
 import { CreateArticle } from '@/types/createArticle.type';
 
-const BASE_URL = 'http://localhost:3000/api/articles';
+const SERVER_URL = import.meta.env.VITE_ENVIRONMENT === 'DEV' ? import.meta.env.VITE_API_DEV_URL : import.meta.env.VITE_API_PROD_URL;
+
+console.log(SERVER_URL)
+
+const BASE_URL = `${SERVER_URL}/api/articles`;
 
 export const getAll = async (): Promise<Article[]> => {
   const result = await request.get<Record<string, Article>>(BASE_URL);
