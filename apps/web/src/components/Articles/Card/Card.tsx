@@ -6,6 +6,7 @@ import styles from './Card.module.css';
 import { useNavigate } from 'react-router-dom';
 import articleApi from '@/api/articles-api';
 import { useDisclosure } from '@mantine/hooks';
+import { ensureLinksOpenInNewTab } from '@/tools/ensureLinkOpensInNewTab';
 
 
 interface CardProps {
@@ -116,7 +117,7 @@ export default function Card(props: CardProps) {
         <div>
           {props.shortContent && !props.isSingle ? (
             <Text className={styles.description}>
-              {props.shortContent}
+              <span dangerouslySetInnerHTML={{ __html: ensureLinksOpenInNewTab(props.shortContent) }} />
               {' '}
               <span
                 role="button"
@@ -137,7 +138,9 @@ export default function Card(props: CardProps) {
               </span>
             </Text>
           ) : (
-            <Text className={styles.description}>{props.content}</Text>
+            <Text className={styles.description}>
+              <span dangerouslySetInnerHTML={{ __html: ensureLinksOpenInNewTab(props.content) }} />
+            </Text>
           )}
         </div>
       </MantineCard>

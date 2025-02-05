@@ -13,6 +13,9 @@ import {
 } from '@mantine/core';
 import { useLocation, useNavigate } from 'react-router-dom';
 import artistApi from '@/api/artist-api';
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+
 
 export default function CreateArtistTable() {
   const { state } = useLocation();
@@ -26,7 +29,7 @@ export default function CreateArtistTable() {
 
   let edit = false;
 
-  if (state?.article !== undefined) {
+  if (state?.bio !== undefined) {
     edit = true;
   }
 
@@ -128,15 +131,12 @@ export default function CreateArtistTable() {
             required
             mb="md"
           />
-          <Textarea
-            label="Bio"
-            placeholder="Write artist bio"
+          <Text>Artist bio</Text>
+          <ReactQuill
             value={artistBio}
-            onChange={(e) => setArtistBio(e.currentTarget.value)}
-            required
-            autosize
-            minRows={4}
-            mb="md"
+            onChange={setArtistBio}
+            theme="snow"
+            style={{ height: '200px', width: '100%', marginBottom: '150px' }}
           />
 
           <FileButton onChange={(file) => {

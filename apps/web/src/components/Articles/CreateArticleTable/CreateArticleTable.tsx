@@ -2,7 +2,6 @@ import { useState } from 'react';
 import imageCompression from 'browser-image-compression';
 import {
   TextInput,
-  Textarea,
   Button,
   Text,
   Grid,
@@ -13,6 +12,8 @@ import {
 } from '@mantine/core';
 import articleApi from '@/api/articles-api';
 import { useLocation, useNavigate } from 'react-router-dom';
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 export default function CreateArticleTable() {
   const { state } = useLocation();
@@ -133,15 +134,12 @@ export default function CreateArticleTable() {
             required
             mb="md"
           />
-          <Textarea
-            label="Content"
-            placeholder="Write your article content"
+          <Text>Article Content</Text>
+          <ReactQuill
             value={articleContent}
-            onChange={(e) => setArticleContent(e.currentTarget.value)}
-            required
-            autosize
-            minRows={4}
-            mb="md"
+            onChange={setArticleContent}
+            theme="snow"
+            style={{ height: '200px', width: '100%', marginBottom: '150px' }}
           />
 
           <FileButton onChange={(file) => {
