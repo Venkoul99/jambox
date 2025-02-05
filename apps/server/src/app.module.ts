@@ -29,7 +29,7 @@ import { AppService } from './app.service';
         password: configService.get<string>('DB_PASS'),
         database: configService.get<string>('DB_NAME'),
         entities: [Article, Artist, User],
-        synchronize: configService.get<string>('ENV') == 'DEV' ? true : false,
+        synchronize: true,
       }),
     }),
     ArticleModule,
