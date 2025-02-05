@@ -1,6 +1,6 @@
 import { Controller, Get, Param, Delete, Post, Body, Put } from '@nestjs/common';
 import { ArtistService } from './artist.service';
-import { Artist } from './Artist.entity';
+import { Artist } from './artist.entity';
 import { Public } from 'src/auth/decorators/public.decorator';
 
 @Controller('artists')
