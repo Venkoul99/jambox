@@ -17,8 +17,8 @@ body {
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  background-color: #01161E;
+  color: #FF5400;
 }
 
 * {

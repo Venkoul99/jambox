@@ -7,13 +7,13 @@ export function Footer() {
       <Container>
         <Group>
           <Link to="/terms-and-conditions">
-            <Text size="sm">Terms and Conditions</Text>
+            <Text size="sm" style={{ color: '#FF5733' }}>Terms and Conditions</Text>
           </Link>
           <Link to="/legal-information">
-            <Text size="sm">Legal Information</Text>
+            <Text size="sm" style={{ color: '#FF5733' }}>Legal Information</Text>
           </Link>
           <Link to="/privacy">
-            <Text size="sm">Privacy Protection</Text>
+            <Text size="sm" style={{ color: '#FF5733' }}>Privacy Protection</Text>
           </Link>
         </Group>
       </Container>

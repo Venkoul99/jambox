@@ -1,3 +1,4 @@
+/* Common styles */
 .navbar {
   height: 100%;
   width: 400px;
@@ -19,8 +20,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 200px;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .hamburger {
@@ -49,6 +49,7 @@
   text-align: center;
   transition: margin 0.3s ease;
   pointer-events: auto;
+  color: #FF5733;
 }
 
 .link:hover {
@@ -62,24 +63,33 @@
 
 .socialMedia {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   gap: 15px;
-  margin-top: 20px;
+  position: absolute;
+  left: 5%; /* Align to the left side */
+  top: 50%; /* Center the social buttons vertically */
+  transform: translateY(-50%);
   pointer-events: auto;
 }
 
 .socialIcon {
-  color: #4a4a4a; /* Dark grey color */
+  color: #FF5733;
   transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
   pointer-events: auto;
 }
 
 .socialIcon:hover {
   transform: scale(1.2);
-  color: black; /* Turns black on hover */
-  pointer-events: auto;
+  color: #FF5733;
 }
 
+.navbar img {
+  display: block;
+  width: 80%;
+  height: auto;
+  object-fit: contain;
+  margin-top: 60px;
+}
 
 /* Mobile Styles */
 @media (max-width: 768px) {
@@ -87,65 +97,133 @@
     position: fixed;
     top: 0;
     left: 0;
-    height: 100%; /* Fullscreen height */
-    width: 100%; /* Fullscreen width */
+    height: 100%;
+    width: 100%;
     padding: var(--mantine-spacing-sm);
-    z-index: 1000; /* Ensure the navbar is above other elements */
-    background: transparent; /* Default state: no background */
-    transition: background 0.3s ease; /* Smooth background transition */
+    z-index: 1000;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .navbar.open {
-    background: linear-gradient(270deg, #C4C4C4, #B2B9BF, #D1D9E1, #A1B8D7); /* Same as body background */
+    background: #01161E;
     background-size: 600% 600%;
-    animation: GradientAnimation 12s ease infinite; /* Keep gradient animation */
+    animation: GradientAnimation 12s ease infinite;
   }
 
   .navbarMain {
     display: none;
+    margin-bottom: 90%;
   }
 
   .navbarMain.open {
-    display: flex; /* Show navbar links when open */
+    display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: center; /* Center links vertically and horizontally */
     height: 100%;
     width: 100%;
+    padding-top: 80px;
+  }
+
+  .socialMedia {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: absolute;
+    top: 50%; /* Center the social buttons vertically */
+    left: 5%; /* Align to the left side */
+    transform: translateY(-50%); /* Correct for centering */
+  }
+
+  .socialIcon {
+    color: #FF5733;
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+  }
+
+  .socialIcon:hover {
+    transform: scale(1.2);
+    color: #FF5733;
   }
 
   .navbar img {
-    display: block; /* Ensure logo is shown */
-    width: 100%;
+    display: block;
+    width: 80%;
     height: auto;
     object-fit: contain;
-    margin-top: 20px;
+    margin-top: 60px;
+    margin-left: 10%;
   }
 
   .hamburger {
-    display: block; /* Show hamburger on mobile */
+    display: block;
     position: absolute;
     top: 20px;
     right: 20px;
-    z-index: 1001; /* Ensure hamburger is above the navbar */
+    z-index: 1001;
   }
 }
 
 /* Desktop Styles */
 @media (min-width: 769px) {
   .navbarMain {
-    display: flex; /* Show navbar links on desktop */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center vertically and horizontally */
+    gap: 20px;
+    width: 100%;
+    flex-grow: 1;
+    padding-top: 50px;
+  }
+
+  .linksContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    margin-top: -50px;
+  }
+
+  .navContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+  }
+
+  .socialMedia {
+    position: absolute;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    top: 50%; /* Center the social buttons vertically */
+    transform: translateY(-50%); /* Correct for centering */
+  }
+
+  .socialIcon {
+    color: #FF5733;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+
+  .socialIcon:hover {
+    transform: scale(1.2);
   }
 
   .navbar img {
-    display: block; /* Ensure logo is shown on desktop */
+    display: block;
     width: 400px;
     height: 100px;
     object-fit: contain;
-    margin-top: 20px; /* Adjust top margin for alignment */
+    margin-top: 20px;
   }
 
   .hamburger {
-    display: none; /* Hide hamburger on desktop */
+    display: none;
   }
 }

@@ -2,7 +2,6 @@ import { useState } from 'react';
 import imageCompression from 'browser-image-compression';
 import {
   TextInput,
-  Textarea,
   Button,
   Text,
   Grid,

@@ -47,12 +47,12 @@
 .description {
   font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
-  color: #333;
+  color: #FF5400;
 }
 
 .clickableTitle {
   text-decoration: none;
-  color: black;
+  color: #FF5733;
   cursor: pointer;
 }
 
